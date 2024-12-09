@@ -1,1 +1,1 @@
-# 10x -- Mirian-Shavadze
+# 10x -- Miriani
