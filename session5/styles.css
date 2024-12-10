@@ -1,47 +1,101 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
+body {
+    background-color: #611ECB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: small;
+}
+
 table {
     border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #FFF;
+    border-radius: 10px;
+    table-layout: fixed;
+    width: 60%;
 }
 
 th, td {
-    border: 1px solid #000000;
     text-align: center;
-    padding: 20px;
-    gap: 20px;
 }
 
 th {
     background-color: #F5F5F5;
-}
-td {
-    border-color: #E1CFFF;
+    padding: 10px;
+    
 }
 
-.container .rating{
+td {
+    border-color: #FFFFFF;
+    padding: 20px;
+}
+
+
+
+.checkbox-name {
+    display: flex;
+    margin-right: 40px;
+}
+
+.name {
+    margin-left: 20px;
+}
+
+/* This is so we can select the stars right to left */
+.rating {
     direction: rtl;
 }
 
-.container .rating label{
+.rating label {
     display: inline-block;
     cursor: pointer;
     color: #ebebeb;
 }
 
-.container .rating label i{
+.rating label i {
     font-size: 1rem;
     transition: 0.2s ease-in;
 }
-.container .rating label:hover i,
-.container .rating label:hover ~ label i{
+
+/* Selecting the stars each etc every item*/
+.rating label:hover i,
+.rating label:hover ~ label i {
     color: #6926D7;
 }
 
-.container .rating .rating-radio {
+.rating .rating-radio {
     display: none;
 }
 
-.container .rating input[type="radio"]:checked + label i,
-.container .rating input[type="radio"]:checked ~ label i {
+.rating input[type="radio"]:checked + label i,
+.rating input[type="radio"]:checked ~ label i {
     color: #6926D7;
-} 
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #E1CFFF;
+    font-weight: bolder;
+    color: #4005A0
+}
+
+/* Hover effect for table headers names, owner, etc. */
+
+th:hover {
+    background-color: #E1CFFF;
+    font-weight: bolder;
+    color: #6416e0;
+}
+
+
+th, td {
+    transition: background-color 0.5s ease;
+}
+
+/* Centering the checkbox of first row first column*/ 
+#firstName {
+    margin-left: 10px;
+}

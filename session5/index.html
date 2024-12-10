@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css" 
-    ref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">>    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
 </head>
 <body>
+
+    <!-- Creating the Table -->
     <table>
         <thead>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <th>Name</th>
+                <th>
+                    <!-- adding another div firstName so i can center the checkbox correctly-->
+                    <div id="firstName">
+                        <div class="checkbox-name">
+                            <input type="checkbox" class="row-select">
+                            <span class="name">
+                                Name
+                            </span>
+                        </div>
+                    </div>
+                </th>
                 <th>Role</th>
                 <th>Company</th>
                 <th>Location</th>
@@ -20,153 +31,205 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 1, Col 2</td>
-                <td>Row 1, Col 3</td>
-                <td>Row 1, Col 4</td>
-                <td>Row 1, Col 5</td>
+            <tr class="first-column">
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                            <span class="name">
+                                Buzz
+                            </span>
                     </div>
                 </td>
-            <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 2, Col 2</td>
-                <td>Row 2, Col 3</td>
-                <td>Row 2, Col 4</td>
-                <td>Row 2, Col 5</td>
+    
+                <td>Owner</td>
+                <td>Your Friend Buzz</td>
+                <td>Australia</td>
+                <!-- Container for ratings-->
                 <td>
                     <div class="container">
                         <div class="rating">
-                            <input type="radio" name="rating" id="star-6" class="rating-radio" value="1"><label for="star-6"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-7" class="rating-radio" value="2"><label for="star-7"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-8" class="rating-radio" value="3"><label for="star-8"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-9" class="rating-radio" value="4"><label for="star-9"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-10" class="rating-radio" value="5"><label for="star-10"><i class="fa fa-star"></i></label></input>
+                            <input type="radio" name="rating-1" id="star-1-1" class="rating-radio" value="1">
+                            <label for="star-1-1"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-1" id="star-1-2" class="rating-radio" value="2">
+                            <label for="star-1-2"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-1" id="star-1-3" class="rating-radio" value="3">
+                            <label for="star-1-3"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-1" id="star-1-4" class="rating-radio" value="4">
+                            <label for="star-1-4"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-1" id="star-1-5" class="rating-radio" value="5">
+                            <label for="star-1-5"><i class="fa fa-star"></i></label>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 3, Col 2</td>
-                <td>Row 3, Col 3</td>
-                <td>Row 3, Col 4</td>
-                <td>Row 3, Col 5</td>
+                <td>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Dustin
+                        </span>
+                    </div>
+                </td>
+                <td>Admin</td>
+                <td>Story Inc</td>
+                <td>Hong Kong</td>
                 <td>
                     <div class="container">
                         <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
+                            <input type="radio" name="rating-2" id="star-2-1" class="rating-radio" value="1">
+                            <label for="star-2-1"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-2" id="star-2-2" class="rating-radio" value="2">
+                            <label for="star-2-2"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-2" id="star-2-3" class="rating-radio" value="3">
+                            <label for="star-2-3"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-2" id="star-2-4" class="rating-radio" value="4">
+                            <label for="star-2-4"><i class="fa fa-star"></i></label>
+                            <input type="radio" name="rating-2" id="star-2-5" class="rating-radio" value="5">
+                            <label for="star-2-5"><i class="fa fa-star"></i></label>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 4, Col 2</td>
-                <td>Row 4, Col 3</td>
-                <td>Row 4, Col 4</td>
-                <td>Row 4, Col 5</td>
+
+                
+
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Mark
+                        </span>
+                    </div>
+                </td>
+                <td>User</td>
+                <td>Mixpanel</td>
+                <td>United States of America</td>
+                <td>
+                    <div class="rating">
+                        <input type="radio" name="rating-3" id="star-3-1" class="rating-radio" value="1">
+                        <label for="star-3-1"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-3" id="star-3-2" class="rating-radio" value="2">
+                        <label for="star-3-2"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-3" id="star-3-3" class="rating-radio" value="3">
+                        <label for="star-3-3"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-3" id="star-3-4" class="rating-radio" value="4">
+                        <label for="star-3-4"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-3" id="star-3-5" class="rating-radio" value="5">
+                        <label for="star-3-5"><i class="fa fa-star"></i></label>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 5, Col 2</td>
-                <td>Row 5, Col 3</td>
-                <td>Row 5, Col 4</td>
-                <td>Row 5, Col 5</td>
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Cynthia
+                        </span>
+                    </div>
+                </td>
+                <td>Visitor</td>
+                <td>Shopify</td>
+                <td>Canada</td>
+                <td>
+                    <div class="rating">
+                        <input type="radio" name="rating-4" id="star-4-1" class="rating-radio" value="1">
+                        <label for="star-4-1"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-4" id="star-4-2" class="rating-radio" value="2">
+                        <label for="star-4-2"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-4" id="star-4-3" class="rating-radio" value="3">
+                        <label for="star-4-3"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-4" id="star-4-4" class="rating-radio" value="4">
+                        <label for="star-4-4"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-4" id="star-4-5" class="rating-radio" value="5">
+                        <label for="star-4-5"><i class="fa fa-star"></i></label>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 6, Col 2</td>
-                <td>Row 6, Col 3</td>
-                <td>Row 6, Col 4</td>
-                <td>Row 6, Col 5</td>
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Cynthia
+                        </span>
+                    </div>
+                </td>
+                <td>Visitor</td>
+                <td>Shopify</td>
+                <td>Canada</td>
+                <td>
+                    <div class="rating">
+                        <input type="radio" name="rating-5" id="star-5-1" class="rating-radio" value="1">
+                        <label for="star-5-1"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-5" id="star-5-2" class="rating-radio" value="2">
+                        <label for="star-5-2"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-5" id="star-5-3" class="rating-radio" value="3">
+                        <label for="star-5-3"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-5" id="star-5-4" class="rating-radio" value="4">
+                        <label for="star-5-4"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-5" id="star-5-5" class="rating-radio" value="5">
+                        <label for="star-5-5"><i class="fa fa-star"></i></label>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 7, Col 2</td>
-                <td>Row 7, Col 3</td>
-                <td>Row 7, Col 4</td>
-                <td>Row 7, Col 5</td>
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Cynthia
+                        </span>
+                    </div>
+                </td>
+                <td>Visitor</td>
+                <td>Shopify</td>
+                <td>Canada</td>
+                <td>
+                    <div class="rating">
+                        <input type="radio" name="rating-6" id="star-6-1" class="rating-radio" value="1">
+                        <label for="star-6-1"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-6" id="star-6-2" class="rating-radio" value="2">
+                        <label for="star-6-2"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-6" id="star-6-3" class="rating-radio" value="3">
+                        <label for="star-6-3"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-6" id="star-6-4" class="rating-radio" value="4">
+                        <label for="star-6-4"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-6" id="star-6-5" class="rating-radio" value="5">
+                        <label for="star-6-5"><i class="fa fa-star"></i></label>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th><input type="checkbox" name="row-select"></th>
-                <td>Row 8, Col 2</td>
-                <td>Row 8, Col 3</td>
-                <td>Row 8, Col 4</td>
-                <td>Row 8, Col 5</td>
                 <td>
-                    <div class="container">
-                        <div class="rating">
-                            <input type="radio" name="rating" id="star-1" class="rating-radio" value="1"><label for="star-1"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-2" class="rating-radio" value="2"><label for="star-2"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-3" class="rating-radio" value="3"><label for="star-3"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-4" class="rating-radio" value="4"><label for="star-4"><i class="fa fa-star"></i></label></input>
-                            <input type="radio" name="rating" id="star-5" class="rating-radio" value="5"><label for="star-5"><i class="fa fa-star"></i></label></input>
-                        </div>
+                    <div class="checkbox-name">
+                        <input type="checkbox" class="row-select">
+                        <span class="name">
+                            Cynthia
+                        </span>
+                    </div>
+                </td>
+                <td>Visitor</td>
+                <td>Shopify</td>
+                <td>Canada</td>
+                <td>
+                    <div class="rating">
+                        <input type="radio" name="rating-7" id="star-7-1" class="rating-radio" value="1">
+                        <label for="star-7-1"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-7" id="star-7-2" class="rating-radio" value="2">
+                        <label for="star-7-2"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-7" id="star-7-3" class="rating-radio" value="3">
+                        <label for="star-7-3"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-7" id="star-7-4" class="rating-radio" value="4">
+                        <label for="star-7-4"><i class="fa fa-star"></i></label>
+                        <input type="radio" name="rating-7" id="star-7-5" class="rating-radio" value="5">
+                        <label for="star-7-5"><i class="fa fa-star"></i></label>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</body>
-</html>
-    
 </body>
 </html>
