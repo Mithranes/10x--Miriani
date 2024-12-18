@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    background-color:antiquewhite;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1{
+    color: darkblue;
+    text-align: center;
+}
+h2{
+    font-size: 24px;
+    text-align: center;
+    padding: 25px;
+    
+}
+
+#about p, h2{
+    background-color: lightgray;
+}
+
+h3{
+    font-size: 20px;
+    text-align: center;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 16px;
+}
+#project1, #project2, #project3 {
+    padding: 25px;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+img {
+    height: 200px;
+}
+
+#about {
+    background-color: lightgrey;
+    text-align: center;
+    border-radius: 5px;
+}
+#skills{
+    background-color: lightyellow;
+}
+#skills ul {
+    font-weight: bold;
+}
+
+nav ul {
+    color: darkred;
+    list-style-type: none;
+    text-align: center;
+    padding: 5px;
+}
+ul a {
+    margin-left: 30px;
+}
+
+div > h3{
+    background-color: lightslategray 
+}
+
+img[src] {
+    border: 2px solid black;
+    border-radius: 50%
+}
+
+nav a:hover {
+    color: orange;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#skills li{
+    display: flex;
+    justify-content: center;
+    
+}
+
+li::before {
+    content: "⭐ ";
+}
+
+
+footer {
+    text-align: center;
+    font-weight: bolder;
+}
+
+#testimonials {
+    border: 2px solid slategray;
+    padding: 25px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
