@@ -1,8 +1,11 @@
+/* Universal to change the font and the background color*/
 * {
     box-sizing: border-box;
     background-color:antiquewhite;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+/* Centering the texts h1, h2 h3, changing font sizes */
 
 h1{
     color: darkblue;
@@ -31,6 +34,8 @@ p {
     line-height: 1.5;
     font-size: 16px;
 }
+
+/* giving each project a border */
 #project1, #project2, #project3 {
     padding: 25px;
     margin: 20px;
@@ -73,12 +78,14 @@ img[src] {
     border-radius: 50%
 }
 
+
 nav a:hover {
     color: orange;
     text-decoration: underline;
     cursor: pointer;
 }
 
+/* This is to center the skills list */
 #skills li{
     display: flex;
     justify-content: center;
@@ -88,7 +95,6 @@ nav a:hover {
 li::before {
     content: "⭐ ";
 }
-
 
 footer {
     text-align: center;
