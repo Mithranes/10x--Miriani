@@ -3,11 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchBtn = document.querySelector(".search-btn");
     const toggleBtn = document.querySelector(".toggle-btn");
     const themeBtn = document.querySelector(".theme-btn");
-    const card = document.querySelector(".card");
-    const forecastDiv = document.querySelector(".forecast");
     const wrapper = document.querySelector(".wrapper");
     const loading = document.querySelector(".loading");
     const favoritesContainer = document.querySelector(".favorites-container");
+    const cardEl = document.querySelector(".card");
+
+    // Weather Card elements
+    const cityEl = document.querySelector(".city-name");
+    const tempEl = document.querySelector(".temp");
+    const iconEl = document.querySelector(".weather-icon");
+    const descEl = document.querySelector(".description");
+    const humidityEl = document.querySelector(".humidity-value");
+    const pressureEl = document.querySelector(".pressure-value");
+    const sunEl = document.querySelector(".sun-value");
+    const windEl = document.querySelector(".wind-value");
+
+    const forecastItems = document.querySelectorAll(".forecast-item");
 
     let isCelsius = true;
     let isDark = true;
@@ -16,16 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentWeatherData = null;
     let currentForecastData = null;
 
-    // Load favorites from localStorage
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-    const showLoading = (show) => loading.style.display = show ? "block" : "none";
 
     const saveFavorites = () => localStorage.setItem("favorites", JSON.stringify(favorites));
 
     const renderFavorites = () => {
         favoritesContainer.innerHTML = "";
-        if (favorites.length === 0) return;
         favorites.forEach(city => {
             const btn = document.createElement("button");
             btn.className = "fav-btn";
@@ -50,106 +57,86 @@ document.addEventListener("DOMContentLoaded", () => {
         const temp = isCelsius ? Math.round(data.main.temp) : Math.round(data.main.temp * 9/5 + 32);
         const tempUnit = isCelsius ? "°C" : "°F";
 
-        card.innerHTML = `
-            <div class="today-card">
-                <h2>${data.name}, ${data.sys.country}</h2>
-                <h3>${temp}${tempUnit}</h3>
-                <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
-                <p style="text-transform: capitalize;">${data.weather[0].description}</p>
-                <div class="bottom-cards">
-                    <div class="humidity">
-                        <img src="images/humidity.svg" alt="Humidity">
-                        <span>${data.main.humidity}% HUMIDITY</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="pressure">
-                        <img src="images/pressure.svg" alt="Pressure">
-                        <span>${data.main.pressure} hPa</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="sun">
-                        <img src="images/sun.svg" alt="Sun">
-                        <span>${formatTime(data.sys.sunrise, data.timezone)} | ${formatTime(data.sys.sunset, data.timezone)}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="wind">
-                        <img src="images/wind.svg" alt="Wind">
-                        <span>${data.wind.speed} m/s</span>
-                    </div>
-                </div>
-            </div>`;
+        cityEl.textContent = `${data.name}, ${data.sys.country}`;
+        tempEl.textContent = `${temp}${tempUnit}`;
+        iconEl.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        descEl.textContent = data.weather[0].description;
+        humidityEl.textContent = `${data.main.humidity}%`;
+        pressureEl.textContent = `${data.main.pressure} hPa`;
+        sunEl.textContent = `${formatTime(data.sys.sunrise, data.timezone)} | ${formatTime(data.sys.sunset, data.timezone)}`;
+        windEl.textContent = `${data.wind.speed} m/s`;
 
-        // Forecast
+        // Update forecast
         const forecastByDate = {};
         currentForecastData.list.forEach(item => {
             const date = item.dt_txt.split(" ")[0];
             if (!forecastByDate[date]) forecastByDate[date] = [];
             forecastByDate[date].push(item);
         });
-
         const dates = Object.keys(forecastByDate).slice(1, 6);
-        forecastDiv.innerHTML = "";
 
-        dates.forEach((date, index) => {
-    const dayItems = forecastByDate[date];
-    const temps = dayItems.map(i => i.main.temp);
-    const minTemp = isCelsius ? Math.round(Math.min(...temps)) : Math.round(Math.min(...temps) * 9/5 + 32);
-    const maxTemp = isCelsius ? Math.round(Math.max(...temps)) : Math.round(Math.max(...temps) * 9/5 + 32);
-    const iconItem = dayItems.find(i => i.dt_txt.includes("12:00:00")) || dayItems[0];
-    const icon = iconItem.weather[0].icon;
+        forecastItems.forEach((el, idx) => {
+            const dayData = forecastByDate[dates[idx]];
+            const temps = dayData.map(i => i.main.temp);
+            const minTemp = isCelsius ? Math.round(Math.min(...temps)) : Math.round(Math.min(...temps) * 9/5 + 32);
+            const maxTemp = isCelsius ? Math.round(Math.max(...temps)) : Math.round(Math.max(...temps) * 9/5 + 32);
+            const iconItem = dayData.find(i => i.dt_txt.includes("12:00:00")) || dayData[0];
+            const icon = iconItem.weather[0].icon;
 
-    const forecastItem = document.createElement("div");
-    forecastItem.className = "forecast-item";
-    forecastItem.style.animationDelay = `${index * 0.1}s`; // stagger
-    forecastItem.innerHTML = `
-        <h5>${new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</h5>
-        <img src="https://openweathermap.org/img/wn/${icon}.png" alt="Weather icon">
-        <p>${minTemp}°/${maxTemp}°</p>`;
-    forecastDiv.appendChild(forecastItem);
-});
-
+            el.querySelector("h5").textContent = new Date(dates[idx]).toLocaleDateString("en-US", { weekday: "short" });
+            el.querySelector("img").src = `https://openweathermap.org/img/wn/${icon}.png`;
+            el.querySelector("p").textContent = `${minTemp}°/${maxTemp}°`;
+        });
     };
 
     const getWeather = async (city) => {
         if (!city) return;
-        showLoading(true);
+
+        // Remove previous fade-in to allow re-trigger
+        cardEl.classList.remove("fade-in");
+        forecastItems.forEach(el => el.classList.remove("fade-in"));
+
+        // Trigger fade-out
+        cardEl.classList.add("fade-out");
+        forecastItems.forEach(el => el.classList.add("fade-out"));
 
         try {
             const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-            const response = await fetch(URL);
-            const data = await response.json();
-
+            const data = await (await fetch(URL)).json();
             if (data.cod !== 200) {
-                card.innerHTML = `<p style="text-align:center; color:red;">City not found!</p>`;
-                forecastDiv.innerHTML = "";
-                wrapper.className = `wrapper ${isDark ? "dark" : "light"}`;
-                showLoading(false);
+                alert("City not found!");
+                cardEl.classList.remove("fade-out");
+                forecastItems.forEach(el => el.classList.remove("fade-out"));
                 return;
             }
-
             currentWeatherData = data;
 
-            const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
-            const forecastResponse = await fetch(forecastURL);
-            const forecastData = await forecastResponse.json();
-
+            const forecastData = await (await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`)).json();
             currentForecastData = forecastData;
 
-            // Save to favorites if not already
             if (!favorites.includes(data.name)) {
                 favorites.push(data.name);
                 saveFavorites();
                 renderFavorites();
             }
 
-            renderWeather();
+            setTimeout(() => {
+                renderWeather();
+                cardEl.classList.remove("fade-out");
+                cardEl.classList.add("fade-in");
 
-        } catch (error) {
-            console.error("Error fetching weather:", error);
-            card.innerHTML = `<p style="text-align:center; color:red;">Failed to fetch data!</p>`;
-            forecastDiv.innerHTML = "";
-        } finally {
-            showLoading(false);
+                forecastItems.forEach((el, idx) => {
+                    el.classList.remove("fade-out");
+                    el.classList.add("fade-in");
+                    el.style.transitionDelay = `${idx * 0.1}s`;
+                });
+            }, 300);
+
+        } catch (err) {
+            console.error(err);
+            alert("Failed to fetch weather data!");
+            cardEl.classList.remove("fade-out");
+            forecastItems.forEach(el => el.classList.remove("fade-out"));
         }
     };
 
@@ -157,33 +144,21 @@ document.addEventListener("DOMContentLoaded", () => {
     searchBtn.addEventListener("click", () => getWeather(search.value));
     search.addEventListener("keypress", (e) => { if (e.key === "Enter") getWeather(search.value); });
 
-    toggleBtn.addEventListener("click", () => {
-        isCelsius = !isCelsius;
-        renderWeather(); // Only update temperatures without fetching again
+    toggleBtn.addEventListener("click", () => { 
+        isCelsius = !isCelsius; 
+        renderWeather(); 
     });
 
     themeBtn.addEventListener("click", () => {
-    isDark = !isDark;
-
-    // Toggle wrapper theme
-    wrapper.classList.toggle("dark", isDark);
-    wrapper.classList.toggle("light", !isDark);
-
-    // Toggle body theme
-    document.body.classList.toggle("dark", isDark);
-    document.body.classList.toggle("light", !isDark);
-
-    // Toggle inputs & buttons theme
-    const elements = document.querySelectorAll(".search-input, .search-btn, .toggle-btn, .theme-btn");
-    elements.forEach(el => {
-        el.classList.toggle("dark", isDark);
-        el.classList.toggle("light", !isDark);
+        isDark = !isDark;
+        wrapper.classList.toggle("dark", isDark);
+        wrapper.classList.toggle("light", !isDark);
+        document.body.classList.toggle("dark", isDark);
+        document.body.classList.toggle("light", !isDark);
+        document.querySelectorAll(".search-input, .search-btn, .toggle-btn, .theme-btn")
+                .forEach(el => { el.classList.toggle("dark", isDark); el.classList.toggle("light", !isDark); });
+        themeBtn.textContent = isDark ? "🌙" : "☀️";
     });
-     // Update emoji
-      themeBtn.textContent = isDark ? "🌙" : "☀️";
-
-});
-
 
     renderFavorites();
 });
