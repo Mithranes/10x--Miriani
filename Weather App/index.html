@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search city...">
+        <button class="search-btn"><i class="fas fa-magnifying-glass"></i></button>
+    </div>
+
+<div class="toggle-container">
+    <button class="toggle-btn">°F/°C</button>
+    <button class="theme-btn">🌙</button> <!-- optional theme toggle -->
+</div>
+    <div class="favorites-container"></div>
+    <div class="card"></div>
+    <div class="forecast"></div>
+    <div class="loading">Loading...</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
