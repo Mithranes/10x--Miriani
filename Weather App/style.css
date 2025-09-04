@@ -201,3 +201,21 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+.clear-fav-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    transition: 0.3s;
+}
+
+.clear-fav-btn:hover {
+    background: rgba(255,255,255,0.35);
+    transform: translateY(-2px);
+}
+

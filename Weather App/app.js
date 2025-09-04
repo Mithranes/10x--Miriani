@@ -160,5 +160,17 @@ document.addEventListener("DOMContentLoaded", () => {
         themeBtn.textContent = isDark ? "🌙" : "☀️";
     });
 
+    const clearFavBtn = document.querySelector(".clear-fav-btn");
+
+clearFavBtn.addEventListener("click", () => {
+    if (!favorites.length) return;
+    if (confirm("Are you sure you want to clear all favorites?")) {
+        favorites = [];
+        saveFavorites();
+        renderFavorites();
+    }
+});
+
+
     renderFavorites();
 });
