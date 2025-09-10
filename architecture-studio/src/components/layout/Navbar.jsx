@@ -3,6 +3,7 @@ import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { AuthContext } from "../Auth/AuthContext.jsx";
 import "./Navbar.scss";
+import LogoImg from '/home/mithranes/Desktop/Final-Project/architecture-studio/src/assets/vitruvian-logo.png';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="logo">
           <RouterLink to="/" onClick={() => setMenuOpen(false)}>
+          <img src={LogoImg} className="logo-img" alt="Vitruvian Logo" />
             Vitruvian Studio
           </RouterLink>
         </div>
@@ -56,6 +58,11 @@ export default function Navbar() {
 
           {user ? (
             <>
+              <li>
+                <RouterLink to="/dashboard" onClick={() => setMenuOpen(false)}>
+                  Dashboard
+                </RouterLink>
+              </li>
               <li>
                 <RouterLink to="/profile" onClick={() => setMenuOpen(false)}>
                   My Profile

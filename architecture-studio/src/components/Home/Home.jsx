@@ -3,7 +3,7 @@ import HeroSection from "./HeroSection";
 import ProjectsSection from "./ProjectsSection";
 import ServicesSection from "./ServicesSection";
 import ProcessSection from "./ProcessSection";
-import ProjectTimeline from "./ProjectTimeline";
+
 import Awards from "./Awards";
 import BlogSection from "./BlogSection";
 import Careers from "./Careers";
@@ -35,7 +35,6 @@ export default function Home() {
       
       <div id="services"><ServicesSection /></div>
       <div id="process"><ProcessSection /></div>
-      <div id="timeline"><ProjectTimeline /></div>
       <div id="awards"><Awards /></div>
       <div id="blog"><BlogSection /></div>
       <div id="careers"><Careers /></div>

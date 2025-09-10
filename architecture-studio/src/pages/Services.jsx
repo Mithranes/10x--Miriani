@@ -1,3 +1,4 @@
+// src/pages/Services.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Services.scss";
@@ -12,16 +13,29 @@ export default function Services() {
   ];
 
   const handleBook = (serviceId) => {
-    // Check if user is logged in
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       alert("Please login first to book a service.");
-      navigate("/login"); // redirect to login page
+      navigate("/login");
       return;
     }
 
-    // If logged in, go to checkout page with service ID
+    // Store a temporary booking with user info (paid = false)
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    bookings.push({
+      serviceId,
+      service: services.find((s) => s.id === serviceId).name,
+      price: services.find((s) => s.id === serviceId).price.replace("$", ""),
+      name: user.fullName || user.email,
+      email: user.email,
+      paymentMethod: null,
+      paid: false,
+      bookedAt: new Date().toLocaleString(),
+    });
+    localStorage.setItem("bookings", JSON.stringify(bookings));
+
+    // Navigate to Checkout for payment
     navigate(`/checkout/${serviceId}`);
   };
 

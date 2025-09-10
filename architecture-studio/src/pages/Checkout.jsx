@@ -1,19 +1,11 @@
-// src/pages/Checkout.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import "./Checkout.scss";
 
-const services = [
-  { id: 1, title: "Residential Design", price: "$500" },
-  { id: 2, title: "Commercial Design", price: "$1200" },
-  { id: 3, title: "Landscape Design", price: "$800" },
-];
-
 export default function Checkout() {
-  const { id } = useParams();
+  const { id } = useParams(); // serviceId
   const navigate = useNavigate();
-  const service = services.find((s) => s.id === parseInt(id));
-
+  const [booking, setBooking] = useState(null);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -22,48 +14,68 @@ export default function Checkout() {
   const [cvv, setCvv] = useState("");
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
-  if (!service) return <p>Service not found</p>;
+  useEffect(() => {
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    const currentBooking = bookings.find(
+      (b) => b.serviceId === parseInt(id) && !b.paid
+    );
+    if (!currentBooking) {
+      alert("Service not found or already paid!");
+      navigate("/dashboard");
+      return;
+    }
+    setBooking(currentBooking);
+    setUserName(currentBooking.name);
+    setEmail(currentBooking.email);
+  }, [id, navigate]);
+
+  if (!booking) return null;
 
   const handleBooking = (e) => {
     e.preventDefault();
 
-    // Check user details
     if (!userName || !email) {
       alert("Please fill all fields!");
       return;
     }
 
-    // Card validation
     if (paymentMethod === "card") {
-      const digitsOnly = cardNumber.replace(/\D/g, ""); // remove spaces or non-digits
-
+      const digitsOnly = cardNumber.replace(/\D/g, "");
       if (!digitsOnly || !expiry || !cvv) {
         alert("Please fill all card details!");
         return;
       }
-
       if (digitsOnly.length < 16) {
         alert("Card number must be 16 digits!");
         return;
       }
-
       if (cvv.length < 3 || cvv.length > 4) {
         alert("CVV must be 3 or 4 digits!");
         return;
       }
-
       if (!/^\d{2}\/\d{2}$/.test(expiry)) {
         alert("Expiry must be in MM/YY format!");
         return;
       }
     }
 
-    setBookingConfirmed(true);
+    // Update booking in localStorage
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    const index = bookings.findIndex((b) => b.serviceId === booking.serviceId && !b.paid);
+    if (index !== -1) {
+      bookings[index] = {
+        ...bookings[index],
+        name: userName,
+        email,
+        paymentMethod,
+        cardDetails: paymentMethod === "card" ? { cardNumber, expiry, cvv } : null,
+        paid: true,
+      };
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+    }
 
-    // Simulate delay before redirect
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 2000);
+    setBookingConfirmed(true);
+    setTimeout(() => navigate("/dashboard"), 2000);
   };
 
   return (
@@ -72,8 +84,8 @@ export default function Checkout() {
 
       {!bookingConfirmed ? (
         <div className="checkout-form">
-          <h2>{service.title}</h2>
-          <p>Price: {service.price}</p>
+          <h2>{booking.service}</h2>
+          <p>Price: ${booking.price}</p>
 
           <form onSubmit={handleBooking}>
             <input
@@ -119,7 +131,7 @@ export default function Checkout() {
                   placeholder="Card Number"
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
-                  maxLength={19} // allows spaces for readability
+                  maxLength={19}
                 />
                 <div className="card-row">
                   <input
@@ -145,7 +157,7 @@ export default function Checkout() {
             )}
 
             <button type="submit" className="btn">
-              Pay {service.price}
+              Pay ${booking.price}
             </button>
           </form>
         </div>
