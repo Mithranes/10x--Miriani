@@ -1,0 +1,56 @@
+.project-timeline {
+  width: 100%;
+  padding: 4rem 0;
+  background: #fff;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    text-align: center;
+    color: #e6b400;;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .timeline-step {
+    flex: 1 1 220px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #e6b400;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-description {
+      font-size: 1rem;
+      color: #555;
+    }
+  }
+}

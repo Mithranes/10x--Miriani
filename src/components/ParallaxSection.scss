@@ -1,0 +1,27 @@
+.parallax-section {
+  width: 100vw;
+  height: 60vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem 5vw;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.faq-section {
+  width: 100%;
+  padding: 4rem 0;
+  background: #e6b400;
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .faq-list {
+    text-align: left;
+  }
+
+  .faq-item {
+    background: #05050536;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    .faq-question {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      font-size: 1rem;
+      color: #555;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      margin-top: 0;
+    }
+
+    &.open {
+      background: #fcc707;
+
+      .faq-answer {
+        max-height: 200px;
+        padding-top: 0.5rem;
+        color: #000;
+      }
+    }
+  }
+}
